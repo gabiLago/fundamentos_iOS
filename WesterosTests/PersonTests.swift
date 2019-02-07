@@ -21,8 +21,10 @@ class PersonTests: XCTestCase {
     
     
     override func setUp() {
+        let starkURL = URL(string: "https://awoiaf.westeros.org/index.php/House_Stark")!
+        
         starkSigil = Sigil(image: UIImage(), description: "Lobo Huargo")
-        starkHouse = House(name: "Starck", sigil: starkSigil, words: "Winter is coming")
+        starkHouse = House(name: "Starck", sigil: starkSigil, words: "Winter is coming", wikiURL: starkURL)
         ned = Person(name: "Eddard", alias: "Ned", house: starkHouse)
         arya = Person(name: "Arya", house: starkHouse)
     }

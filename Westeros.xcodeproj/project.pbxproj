@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		061F266F220B703A005ABBA7 /* repositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F266E220B703A005ABBA7 /* repositoryTests.swift */; };
+		061F2672220B7142005ABBA7 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F2671220B7142005ABBA7 /* Repository.swift */; };
+		062E04BF220C68F1009A7649 /* WikiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062E04BD220C68F1009A7649 /* WikiViewController.swift */; };
+		062E04C0220C68F1009A7649 /* WikiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 062E04BE220C68F1009A7649 /* WikiViewController.xib */; };
 		06B10710220ACE0B00BFA550 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B1070F220ACE0B00BFA550 /* AppDelegate.swift */; };
-		06B10715220ACE0B00BFA550 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06B10713220ACE0B00BFA550 /* Main.storyboard */; };
 		06B10717220ACE0D00BFA550 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06B10716220ACE0D00BFA550 /* Assets.xcassets */; };
 		06B10730220AE6AA00BFA550 /* HouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B1072F220AE6AA00BFA550 /* HouseTests.swift */; };
 		06B10733220AE80400BFA550 /* House.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B10732220AE80400BFA550 /* House.swift */; };
@@ -34,9 +37,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		061F266E220B703A005ABBA7 /* repositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = repositoryTests.swift; sourceTree = "<group>"; };
+		061F2671220B7142005ABBA7 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		062E04BD220C68F1009A7649 /* WikiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiViewController.swift; sourceTree = "<group>"; };
+		062E04BE220C68F1009A7649 /* WikiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WikiViewController.xib; sourceTree = "<group>"; };
 		06B1070C220ACE0B00BFA550 /* Westeros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Westeros.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06B1070F220ACE0B00BFA550 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		06B10714220ACE0B00BFA550 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		06B10716220ACE0D00BFA550 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06B1071B220ACE0D00BFA550 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06B10720220ACE0D00BFA550 /* WesterosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WesterosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		061F2670220B711C005ABBA7 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				061F2671220B7142005ABBA7 /* Repository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		06B10703220ACE0B00BFA550 = {
 			isa = PBXGroup;
 			children = (
@@ -97,7 +111,6 @@
 				06B1073B220B45AC00BFA550 /* Controllers */,
 				06B10731220AE78C00BFA550 /* Domain */,
 				06B1070F220ACE0B00BFA550 /* AppDelegate.swift */,
-				06B10713220ACE0B00BFA550 /* Main.storyboard */,
 				06B10716220ACE0D00BFA550 /* Assets.xcassets */,
 				06B10747220B4B5200BFA550 /* codeIsComing.png */,
 				06B10746220B4B5200BFA550 /* targaryenSmall.jpg */,
@@ -113,6 +126,7 @@
 				06B10726220ACE0D00BFA550 /* Info.plist */,
 				06B1072F220AE6AA00BFA550 /* HouseTests.swift */,
 				06B10736220AF0F700BFA550 /* PersonTests.swift */,
+				061F266E220B703A005ABBA7 /* repositoryTests.swift */,
 			);
 			path = WesterosTests;
 			sourceTree = "<group>";
@@ -120,6 +134,7 @@
 		06B10731220AE78C00BFA550 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				061F2670220B711C005ABBA7 /* Repositories */,
 				06B10732220AE80400BFA550 /* House.swift */,
 				06B10734220AEF7B00BFA550 /* Sigil.swift */,
 				06B10738220AF18A00BFA550 /* Person.swift */,
@@ -132,6 +147,8 @@
 			children = (
 				06B1073C220B45E900BFA550 /* HouseDetailViewController.swift */,
 				06B1073D220B45E900BFA550 /* HouseDetailViewController.xib */,
+				062E04BD220C68F1009A7649 /* WikiViewController.swift */,
+				062E04BE220C68F1009A7649 /* WikiViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -228,9 +245,9 @@
 			files = (
 				06B1074B220B4B5200BFA550 /* lannister.jpg in Resources */,
 				06B10717220ACE0D00BFA550 /* Assets.xcassets in Resources */,
-				06B10715220ACE0B00BFA550 /* Main.storyboard in Resources */,
 				06B10749220B4B5200BFA550 /* targaryenSmall.jpg in Resources */,
 				06B1073F220B45E900BFA550 /* HouseDetailViewController.xib in Resources */,
+				062E04C0220C68F1009A7649 /* WikiViewController.xib in Resources */,
 				06B1074A220B4B5200BFA550 /* codeIsComing.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,11 +266,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				061F2672220B7142005ABBA7 /* Repository.swift in Sources */,
 				06B1074E220B582600BFA550 /* UIViewController+Navigation.swift in Sources */,
 				06B1073E220B45E900BFA550 /* HouseDetailViewController.swift in Sources */,
 				06B10735220AEF7B00BFA550 /* Sigil.swift in Sources */,
 				06B10733220AE80400BFA550 /* House.swift in Sources */,
 				06B10710220ACE0B00BFA550 /* AppDelegate.swift in Sources */,
+				062E04BF220C68F1009A7649 /* WikiViewController.swift in Sources */,
 				06B10739220AF18A00BFA550 /* Person.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06B10730220AE6AA00BFA550 /* HouseTests.swift in Sources */,
+				061F266F220B703A005ABBA7 /* repositoryTests.swift in Sources */,
 				06B10737220AF0F700BFA550 /* PersonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,17 +296,6 @@
 			targetProxy = 06B10721220ACE0D00BFA550 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		06B10713220ACE0B00BFA550 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				06B10714220ACE0B00BFA550 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		06B10727220ACE0D00BFA550 /* Debug */ = {

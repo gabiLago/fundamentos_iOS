@@ -17,13 +17,15 @@ final class House {
     let name: String
     let sigil: Sigil
     let words: Words
+    let wikiURL: URL
     private var _members: Members
     
     // MARK: Initialization
-    init(name: String, sigil: Sigil, words: Words) {
+    init(name: String, sigil: Sigil, words: Words, wikiURL: URL) {
         self.name = name
         self.sigil = sigil
         self.words = words
+        self.wikiURL = wikiURL
         _members = Members()
     }
 }
@@ -34,10 +36,20 @@ extension House {
     }
     
     func add(person: Person) {
-        guard person.house.name == name else { return }
+        // guard person.house.name == name else { return }
+        // Refactor
+        guard person.house == self else { return }
+        
         _members.insert(person)
     }
+    
+    // Función variatica
+    func add(persons: Person...) {
+        persons.forEach { add(person: $0) }
+    }
 }
+
+
 
 extension Person {
     var proxy: String {

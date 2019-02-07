@@ -25,8 +25,11 @@ class HouseTests: XCTestCase {
         starkSigil = Sigil(image: UIImage(), description: "Lobo Huargo")
         lannisterSigil = Sigil(image: UIImage(), description: "León Rampante")
         
-        starkHouse = House(name: "Starck", sigil: starkSigil, words: "Winter is coming")
-        lannisterHouse = House(name: "Lannister", sigil: lannisterSigil, words: "Oye mi rujido")
+        let starkURL = URL(string: "https://awoiaf.westeros.org/index.php/House_Stark")!
+        let lannisterURL = URL(string: "https://awoiaf.westeros.org/index.php/House_Lannister")!
+        
+        starkHouse = House(name: "Starck", sigil: starkSigil, words: "Winter is coming", wikiURL: starkURL)
+        lannisterHouse = House(name: "Lannister", sigil: lannisterSigil, words: "Oye mi rujido", wikiURL: lannisterURL)
         
         robb = Person(name: "Robb", alias: "el joven lobo", house: starkHouse)
         arya = Person(name: "Arya", house: starkHouse)
@@ -39,15 +42,16 @@ class HouseTests: XCTestCase {
 
     // Given - When - Then
     func testHouseExistence() {
+        let starkURL = URL(string: "https://awoiaf.westeros.org/index.php/House_Stark")!
+        
         let starkSigil = Sigil(image: UIImage(), description: "Lobo Huargo")
-        let stark = House(name: "Stark", sigil: starkSigil, words: "Winter is coming")
+        let stark = House(name: "Stark", sigil: starkSigil, words: "Winter is coming", wikiURL: starkURL)
         XCTAssertNotNil(stark)
     }
     
     func testSigilExistence() {
         let starkSigil = Sigil(image: UIImage(), description: "Lobo Huargo")
         XCTAssertNotNil(starkSigil)
-        
         let lannisterSigil = Sigil(image: UIImage(), description: "León Rampante")
         XCTAssertNotNil(lannisterSigil)
     }
@@ -68,12 +72,19 @@ class HouseTests: XCTestCase {
         XCTAssertEqual(starkHouse.count, 2)
     }
     
+    func testHouseAddPersonsAtOnce() {
+        starkHouse.add(persons: robb, arya, tyrion)
+        XCTAssertEqual(starkHouse.count, 2)
+    }
+    
+    
     func testHouseEquality() {
+        let starkURL = URL(string: "https://awoiaf.westeros.org/index.php/House_Stark")!
         // Identidad
         XCTAssertEqual(starkHouse, starkHouse)
         
         // Igualdad
-        let jinxed = House(name: "Starck", sigil: starkSigil, words: "Winter is coming")
+        let jinxed = House(name: "Starck", sigil: starkSigil, words: "Winter is coming", wikiURL: starkURL)
         XCTAssertEqual(starkHouse, jinxed)
         
         // Desigualdad
