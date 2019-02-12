@@ -6,4 +6,6 @@
 //  Copyright © 2019 Gabi Lago Blasco. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+typealias Season: String    
