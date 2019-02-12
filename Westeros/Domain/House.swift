@@ -35,6 +35,10 @@ extension House {
         return _members.count
     }
     
+    var sortedMembers: [Person] {
+        return _members.sorted()
+    }
+    
     func add(person: Person) {
         // guard person.house.name == name else { return }
         // Refactor
@@ -51,26 +55,7 @@ extension House {
 
 
 
-extension Person {
-    var proxy: String {
-        return "\(name) \(alias) \(house.name)"
-    }
-}
 
-// Si dos personas tienen el mismo hash, significa que son iguales
-// A la inversa no tiene porqué ser verdad: 2 objetos pueden ser iguales pero no tener el mismo hash
-extension Person: Hashable {
-    // Con proxy pasamos el marrón de calcular a otro objeto
-    var hashValue: Int {
-        return proxy.hashValue
-    }
-}
-
-extension Person: Equatable {
-    static func == (lhs: Person, rhs: Person) -> Bool {
-        return lhs.proxy == rhs.proxy
-    }
-}
 
 extension House {
     var proxyForEquality: String {

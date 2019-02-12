@@ -17,12 +17,7 @@ final class Person {
     
     // Variable computada
     var alias: String {
-        get {
-            guard let alias = _alias else {
-                return ""
-            }
-            return alias
-        }
+        return _alias ?? ""
     }
     
     //MARK: Initialization
@@ -46,3 +41,33 @@ extension Person {
     }
 }
 
+extension Person {
+    var proxyForEquality: String {
+        return "\(name) \(alias) \(house.name)"
+    }
+    
+    var proxyForComparison: String {
+        return fullName
+    }
+}
+
+// Si dos personas tienen el mismo hash, significa que son iguales
+// A la inversa no tiene porqué ser verdad: 2 objetos pueden ser iguales pero no tener el mismo hash
+extension Person: Hashable {
+    // Con proxy pasamos el marrón de calcular a otro objeto
+    var hashValue: Int {
+        return proxyForEquality.hashValue
+    }
+}
+
+extension Person: Equatable {
+    static func == (lhs: Person, rhs: Person) -> Bool {
+        return lhs.proxyForEquality == rhs.proxyForEquality
+    }
+}
+
+extension Person: Comparable {
+    static func < (lhs: Person, rhs: Person) -> Bool {
+        return lhs.proxyForComparison < rhs.proxyForComparison
+    }
+}

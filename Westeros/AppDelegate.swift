@@ -25,14 +25,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Creamos los modelos
         let houses = Repository.local.houses
         
-      
-        // Crear el combinador
-        let tabBarController = UITabBarController()
-        tabBarController.viewControllers = houses.map { HouseDetailViewController(model: $0).wrappedInNavigation() }
         
+        // Creamos los controladores (el que irá en master y el que irá en detail)
+        let houseListViewController = HouseListViewController(model: houses)
+      
+        
+        // recuperar la última casa seleccionada (si la hay)
+        let lastHouseSelected = houseListViewController.lastSelectedHouse()
+        
+        let houseDetailViewController = HouseDetailViewController(model: lastHouseSelected)
+        // Asignar delegados
+        // UN OBJETO SOLO PUEDE TENER UN DELEGADO
+        // UN OBJETO PUEDE SER DELAGOD DE MUCHOS OTROS OBJETOS
+        houseListViewController.delegate = houseDetailViewController
+        // Asignar otro delegado para iphone
+        
+        let splitViewController = UISplitViewController()
+        splitViewController.viewControllers = [
+            houseListViewController.wrappedInNavigation(),
+            houseDetailViewController.wrappedInNavigation()
+        ]
+        
+     
         
         // Asignamos el rootViewController del window
-        window?.rootViewController = tabBarController
+        window?.rootViewController = splitViewController
         
         return true
     }

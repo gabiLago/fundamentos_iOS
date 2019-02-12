@@ -17,7 +17,7 @@ class HouseDetailViewController:
     @IBOutlet weak var wordsLabel: UILabel!
     
     // MARK: Properties
-    let model: House
+    var model: House
     
     // MARK: Initializators
     init(model: House) {
@@ -50,9 +50,22 @@ class HouseDetailViewController:
     
     // MARK: UI
     func setupUI() {
-        // AÑadir botón para nevagar a la wiki
+        
+        // Crear botones para nevagar a la wiki y a members
         let wikiButton = UIBarButtonItem(title: "Wiki", style: .plain, target: self, action: #selector(displayWiki))
-        navigationItem.rightBarButtonItem = wikiButton
+        
+        let membersButton = UIBarButtonItem(title: "Members", style: .plain, target: self, action: #selector(displayMembers))
+        
+        // Mostrar botones
+        navigationItem.rightBarButtonItems = [membersButton, wikiButton]
+    }
+    
+    @objc func displayMembers() {
+        // Creamos el controlador
+        let memberListViewController = MemberListViewController(model: model.sortedMembers)
+        
+        // Lo mostramos mediante push
+        navigationController?.pushViewController(memberListViewController, animated: true)
     }
     
     @objc func displayWiki() {
@@ -62,4 +75,16 @@ class HouseDetailViewController:
         // Hacemos push
         navigationController?.pushViewController(wikiViewController, animated: true)
     }
+}
+
+extension HouseDetailViewController: HouseListViewControllerDelegate {
+    func houseListViewController(_ viewController: HouseListViewController, didSelectHouse house: House) {
+        // Re-asigna el modelo
+        self.model = house
+        
+        // Sincroniza el modelo (el nuevo) con la vista
+        syncModelWithView()
+    }
+    
+    
 }
