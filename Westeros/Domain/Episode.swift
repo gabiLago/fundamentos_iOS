@@ -6,9 +6,7 @@
 //  Copyright © 2019 Gabi Lago Blasco. All rights reserved.
 //
 
-import Foundation
-
-typealias Season = String
+import UIKit
 
 final class Episode {
     let title: String

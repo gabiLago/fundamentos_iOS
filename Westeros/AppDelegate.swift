@@ -18,13 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions:
         [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        
+
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = .red
         
         // Creamos los modelos
         let houses = Repository.local.houses
-        
+       
         
         // Creamos los controladores (el que irá en master y el que irá en detail)
         let houseListViewController = HouseListViewController(model: houses)

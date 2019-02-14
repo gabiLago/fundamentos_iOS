@@ -20,8 +20,14 @@ protocol HouseFactory {
     func houses(filteredBy filter: HouseFilter) -> [House]
 }
 
-final class LocalFactory: HouseFactory {
-   
+protocol SeasonFactory {
+    typealias SeasonFilter = (Season) -> Bool
+    var seasons: [Season] { get } // Solo get, porque será de solo lectura.
+    func season(named: String) -> Season?
+    func seasons(filteredBy filter: SeasonFilter) -> [Season]
+}
+
+final class LocalFactory: HouseFactory, SeasonFactory {
     
     var houses: [House] {
         // Creación de casas
@@ -61,6 +67,50 @@ final class LocalFactory: HouseFactory {
     func houses(filteredBy theFilter: (House) -> Bool) -> [House] {
         return houses.filter(theFilter)
     }
-      
+    
+    var seasons: [Season] {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        
+        let dateString1 = "17/04/2011"
+        let dateString2 = "24/04/2011"
+        let dateString3 = "01/04/2012"
+        let screeningDate1 = dateFormatter.date(from: dateString1)
+        let screeningDate2 = dateFormatter.date(from: dateString2)
+        let releaseDate1 = dateFormatter.date(from: dateString1)
+        let releaseDate2 = dateFormatter.date(from: dateString3)
+        let title1 = "Winter is Coming"
+        let title2 = "The Kingsroad"
+        let synopsis1 = "El rey [...] su ejército."
+        let synopsis2 = "Tras aceptar su nuevo rol [...], Drogo."
+        
+        let season1 = Season(name: "Temporada 1", releaseDate: releaseDate1!)
+        let season2 = Season(name: "Temporada 2", releaseDate: releaseDate2!)
+        
+        let episode1 = Episode(title: title1, screeningDate: screeningDate1!, synopsis: synopsis1, season: season1)
+        let episode2 = Episode(title: title2, screeningDate: screeningDate2!, synopsis: synopsis2, season: season1)
+        
+        season1.add(episode: episode1)
+        season2.add(episode: episode1)
+        
+        
+        return [season1].sorted()
+    }
+    
+    func season(named name: String) -> Season? {
+        let season = seasons.first{ $0.name.uppercased() == name.uppercased() } // Con uppercase normalizamos los valores
+        return season
+    }
+    
+    func seasons(filteredBy seasonFilter: (Season) -> Bool) -> [Season] {
+        return seasons.filter(seasonFilter)
+    }
+    
 }
+
+
+
+
+
+
 

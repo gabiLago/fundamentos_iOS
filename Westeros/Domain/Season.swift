@@ -8,29 +8,66 @@
 
 import UIKit
 
-//final class Season {
-//    // MARK: Properties
-//    let name: String
-//    // Evito referencia circular, uso unowned porque parece más apropiado que weak: No hay episodios sin temporada.
-//    unowned let episodes: SeasonEpisodes
-//    let releaseDate: Date
-//    
-//    // MARK: Initialization
-//    init(name: String, episodes: SeasonEpisodes, releaseDate: Date) {
-//        self.name = name
-//        self.episodes = episodes
-//        self.releaseDate = releaseDate
-//    }
-//}
+typealias SeasonEpisodes = Set<Episode>
 
-//final class SeasonEpisodes {
-//    // MARK: Properties
-//    let episodes: Set<Episode>
-//    
-//    // MARK: Initialization
-//    init(episodes: Set<Episode>){
-//        self.episodes = episodes
-//    }
-//}
+final class Season {
+    // MARK: Properties
+    let name: String
+    #warning("TODO Eliminar referencias circulares, unowned mejor que weak?")
+    private var _episodes: SeasonEpisodes
+    let releaseDate: Date
+    
+    // MARK: Initialization
+    init(name: String, releaseDate: Date) {
+        self.name = name
+        self.releaseDate = releaseDate
+        _episodes = SeasonEpisodes()
+    }
+}
 
+extension Season {
+    var proxySeasonForEquatable: String {
+        return name
+    }
+    
+    var proxySeasonForComparison: Date {
+        return releaseDate
+    }
+}
+
+extension Season: Hashable {
+    var hashValue: Int {
+        return proxySeasonForEquatable.hashValue
+    }
+}
+
+extension Season: Equatable {
+    static func == (lhs: Season, rhs: Season) -> Bool {
+        return lhs.proxySeasonForComparison == rhs.proxySeasonForComparison
+    }
+}
+
+extension Season: Comparable {
+    static func < (lhs: Season, rhs: Season) -> Bool {
+        return lhs.proxySeasonForComparison < rhs.proxySeasonForComparison
+    }    
+}
+
+extension Season: CustomStringConvertible {
+    var description: String {
+        return "Nombre de la temporada: \(name)"
+    }
+}
+
+
+extension Season {
+    var count: Int {
+        return _episodes.count
+    }
+
+    func add(episode: Episode) {
+
+        _episodes.insert(episode)
+    }
+}
 

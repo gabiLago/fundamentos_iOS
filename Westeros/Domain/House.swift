@@ -9,7 +9,7 @@
 import Foundation
 
 typealias Words = String
-typealias Members = Set<Person>
+typealias Members =  Set<Person>
 
 final class House {
     
