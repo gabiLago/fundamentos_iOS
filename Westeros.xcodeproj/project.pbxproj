@@ -13,6 +13,9 @@
 		061F2672220B7142005ABBA7 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F2671220B7142005ABBA7 /* Repository.swift */; };
 		062E04BF220C68F1009A7649 /* WikiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062E04BD220C68F1009A7649 /* WikiViewController.swift */; };
 		062E04C0220C68F1009A7649 /* WikiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 062E04BE220C68F1009A7649 /* WikiViewController.xib */; };
+		063A25AE221698CF009CD3C4 /* arrays in Resources */ = {isa = PBXBuildFile; fileRef = 063A25AD221698CF009CD3C4 /* arrays */; };
+		063A25B22216A6BE009CD3C4 /* GOTData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063A25B12216A6BE009CD3C4 /* GOTData.swift */; };
+		063A25B42216B7A7009CD3C4 /* dataArraysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063A25B32216B7A7009CD3C4 /* dataArraysTests.swift */; };
 		06517C182212EEB1006402FE /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06517C172212EEB1006402FE /* constants.swift */; };
 		06B10710220ACE0B00BFA550 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B1070F220ACE0B00BFA550 /* AppDelegate.swift */; };
 		06B10717220ACE0D00BFA550 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06B10716220ACE0D00BFA550 /* Assets.xcassets */; };
@@ -52,6 +55,9 @@
 		061F2671220B7142005ABBA7 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		062E04BD220C68F1009A7649 /* WikiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiViewController.swift; sourceTree = "<group>"; };
 		062E04BE220C68F1009A7649 /* WikiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WikiViewController.xib; sourceTree = "<group>"; };
+		063A25AD221698CF009CD3C4 /* arrays */ = {isa = PBXFileReference; lastKnownFileType = text; path = arrays; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		063A25B12216A6BE009CD3C4 /* GOTData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOTData.swift; sourceTree = "<group>"; };
+		063A25B32216B7A7009CD3C4 /* dataArraysTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataArraysTests.swift; sourceTree = "<group>"; };
 		06517C172212EEB1006402FE /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		06B1070C220ACE0B00BFA550 /* Westeros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Westeros.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06B1070F220ACE0B00BFA550 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				061F2671220B7142005ABBA7 /* Repository.swift */,
+				063A25AD221698CF009CD3C4 /* arrays */,
+				063A25B12216A6BE009CD3C4 /* GOTData.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -147,6 +155,7 @@
 				061F266E220B703A005ABBA7 /* repositoryTests.swift */,
 				06B50E4B2213214D00935368 /* SeasonTests.swift */,
 				06B50E4D2213215700935368 /* EpisodeTests.swift */,
+				063A25B32216B7A7009CD3C4 /* dataArraysTests.swift */,
 			);
 			path = WesterosTests;
 			sourceTree = "<group>";
@@ -270,6 +279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				063A25AE221698CF009CD3C4 /* arrays in Resources */,
 				060E83B7220DB90900EEB3B8 /* MemberListViewController.xib in Resources */,
 				06B1074B220B4B5200BFA550 /* lannister.jpg in Resources */,
 				06B10717220ACE0D00BFA550 /* Assets.xcassets in Resources */,
@@ -305,6 +315,7 @@
 				06B50E522214135F00935368 /* Episode.swift in Sources */,
 				06B10733220AE80400BFA550 /* House.swift in Sources */,
 				06B10710220ACE0B00BFA550 /* AppDelegate.swift in Sources */,
+				063A25B22216A6BE009CD3C4 /* GOTData.swift in Sources */,
 				062E04BF220C68F1009A7649 /* WikiViewController.swift in Sources */,
 				06B10739220AF18A00BFA550 /* Person.swift in Sources */,
 				06DC98A7220CCDC1002BE234 /* HouseListViewController.swift in Sources */,
@@ -316,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06B50E4C2213214D00935368 /* SeasonTests.swift in Sources */,
+				063A25B42216B7A7009CD3C4 /* dataArraysTests.swift in Sources */,
 				06B10730220AE6AA00BFA550 /* HouseTests.swift in Sources */,
 				061F266F220B703A005ABBA7 /* repositoryTests.swift in Sources */,
 				06B10737220AF0F700BFA550 /* PersonTests.swift in Sources */,

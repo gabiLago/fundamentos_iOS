@@ -13,6 +13,7 @@ final class Repository {
     static let local = LocalFactory()
 }
 
+// MARK: Protocols
 protocol HouseFactory {
     typealias HouseFilter = (House) -> Bool
     var houses: [House] { get } // Solo get, porque será de solo lectura.
@@ -20,14 +21,15 @@ protocol HouseFactory {
     func houses(filteredBy filter: HouseFilter) -> [House]
 }
 
-protocol SeasonFactory {
+protocol ItemsFactory {
     typealias SeasonFilter = (Season) -> Bool
-    var seasons: [Season] { get } // Solo get, porque será de solo lectura.
+    var gotItem: (seasons: [Season], episodes: [Episode]) { get }
     func season(named: String) -> Season?
     func seasons(filteredBy filter: SeasonFilter) -> [Season]
+    func episodes(named: String) -> Episode?
 }
 
-final class LocalFactory: HouseFactory, SeasonFactory {
+final class LocalFactory: HouseFactory, ItemsFactory {
     
     var houses: [House] {
         // Creación de casas
@@ -68,42 +70,47 @@ final class LocalFactory: HouseFactory, SeasonFactory {
         return houses.filter(theFilter)
     }
     
-    var seasons: [Season] {
+    // Adding Seasons and its Episodes
+    var gotItem: (seasons: [Season], episodes: [Episode]) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "dd-MM-yyyy"
         
-        let dateString1 = "17/04/2011"
-        let dateString2 = "24/04/2011"
-        let dateString3 = "01/04/2012"
-        let screeningDate1 = dateFormatter.date(from: dateString1)
-        let screeningDate2 = dateFormatter.date(from: dateString2)
-        let releaseDate1 = dateFormatter.date(from: dateString1)
-        let releaseDate2 = dateFormatter.date(from: dateString3)
-        let title1 = "Winter is Coming"
-        let title2 = "The Kingsroad"
-        let synopsis1 = "El rey [...] su ejército."
-        let synopsis2 = "Tras aceptar su nuevo rol [...], Drogo."
+        var seasonsArray = [Season]()
+        var episodesArray = [Episode]()
+
+        for season in gotSeasons {
+            seasonsArray.append(Season(
+                name: season.name,
+                releaseDate: dateFormatter.date(from: season.releaseDate)!)
+            )
+        }
         
-        let season1 = Season(name: "Temporada 1", releaseDate: releaseDate1!)
-        let season2 = Season(name: "Temporada 2", releaseDate: releaseDate2!)
+        for episode in gotEpisodes {
+            episodesArray.append(Episode(
+                title: episode.title,
+                screeningDate: dateFormatter.date(from: episode.screeningDate)!,
+                synopsis: episode.synopsis,
+                season: seasonsArray.first(where: {$0.name == episode.season})!)
+            )
+        }
         
-        let episode1 = Episode(title: title1, screeningDate: screeningDate1!, synopsis: synopsis1, season: season1)
-        let episode2 = Episode(title: title2, screeningDate: screeningDate2!, synopsis: synopsis2, season: season1)
-        
-        season1.add(episode: episode1)
-        season2.add(episode: episode1)
+        return (seasons: seasonsArray, episodes: episodesArray)
         
         
-        return [season1].sorted()
     }
     
     func season(named name: String) -> Season? {
-        let season = seasons.first{ $0.name.uppercased() == name.uppercased() } // Con uppercase normalizamos los valores
+        let season = gotItem.seasons.first{ $0.name.uppercased() == name.uppercased() } // Con uppercase normalizamos los valores
         return season
     }
     
     func seasons(filteredBy seasonFilter: (Season) -> Bool) -> [Season] {
-        return seasons.filter(seasonFilter)
+        return gotItem.seasons.filter(seasonFilter)
+    }
+    
+    func episodes(named title: String) -> Episode? {
+        let episode = gotItem.episodes.first{ $0.title.uppercased() == title.uppercased() } // Con uppercase normalizamos los valores
+        return episode
     }
     
 }
