@@ -13,7 +13,7 @@ final class Repository {
     static let local = LocalFactory()
 }
 
-// MARK: Protocols
+
 protocol HouseFactory {
     typealias HouseFilter = (House) -> Bool
     var houses: [House] { get } // Solo get, porque será de solo lectura.
@@ -21,15 +21,13 @@ protocol HouseFactory {
     func houses(filteredBy filter: HouseFilter) -> [House]
 }
 
-protocol ItemsFactory {
+protocol SeasonFactory {
     typealias SeasonFilter = (Season) -> Bool
-    var gotItem: (seasons: [Season], episodes: [Episode]) { get }
-    func season(named: String) -> Season?
+    var seasons: [Season] { get }
     func seasons(filteredBy filter: SeasonFilter) -> [Season]
-    func episodes(named: String) -> Episode?
 }
 
-final class LocalFactory: HouseFactory, ItemsFactory {
+final class LocalFactory: HouseFactory, SeasonFactory {
     
     var houses: [House] {
         // Creación de casas
@@ -71,13 +69,13 @@ final class LocalFactory: HouseFactory, ItemsFactory {
     }
     
     // Adding Seasons and its Episodes
-    var gotItem: (seasons: [Season], episodes: [Episode]) {
+    var seasons: [Season] {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         
         var seasonsArray = [Season]()
         var episodesArray = [Episode]()
-
+        
         for season in gotSeasons {
             seasonsArray.append(Season(
                 name: season.name,
@@ -86,31 +84,25 @@ final class LocalFactory: HouseFactory, ItemsFactory {
         }
         
         for episode in gotEpisodes {
-            episodesArray.append(Episode(
+            
+            let season = seasonsArray.first(where: {$0.name == episode.season})!
+            let thisEpisode = (Episode(
                 title: episode.title,
                 screeningDate: dateFormatter.date(from: episode.screeningDate)!,
                 synopsis: episode.synopsis,
-                season: seasonsArray.first(where: {$0.name == episode.season})!)
+                season: season
+                )
             )
+            
+            season.add(episode: thisEpisode)
+            episodesArray.append(thisEpisode)
+            
         }
-        
-        return (seasons: seasonsArray, episodes: episodesArray)
-        
-        
-    }
-    
-    func season(named name: String) -> Season? {
-        let season = gotItem.seasons.first{ $0.name.uppercased() == name.uppercased() } // Con uppercase normalizamos los valores
-        return season
+        return seasonsArray.sorted()
     }
     
     func seasons(filteredBy seasonFilter: (Season) -> Bool) -> [Season] {
-        return gotItem.seasons.filter(seasonFilter)
-    }
-    
-    func episodes(named title: String) -> Episode? {
-        let episode = gotItem.episodes.first{ $0.title.uppercased() == title.uppercased() } // Con uppercase normalizamos los valores
-        return episode
+        return seasons.filter(seasonFilter)
     }
     
 }

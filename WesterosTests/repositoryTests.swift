@@ -17,8 +17,7 @@ class repositoryTests: XCTestCase {
     
     override func setUp() {
         houses = Repository.local.houses
-        seasons = Repository.local.gotItem.seasons
-        episodes = Repository.local.gotItem.episodes
+        seasons = Repository.local.seasons
     }
     
     
@@ -61,13 +60,6 @@ class repositoryTests: XCTestCase {
         XCTAssertEqual(filtered.count, 1 )
     }
     
-    func testLocalFactory_SeasonsFilteredBy_ReturnsTheCorrectValue() {
-        let filtered = Repository.local.gotItem.seasons {
-            $0.count == 1
-        }
-        XCTAssertEqual(filtered.count, 1 )
-    }
-    
     func testLocalRepositorySeasonExistence() {
         XCTAssertNotNil(seasons)
     }
@@ -79,6 +71,15 @@ class repositoryTests: XCTestCase {
     func testLocalRepository_ReturnSortedArrayOfSeasons() {
         XCTAssertEqual(seasons, seasons.sorted())
     }
+    
+    func testLocalFactory_SeasonFilteredBy_ReturnsTheCorrectValue() {
+        let filtered = Repository.local.seasons {
+            $0.count == 3
+        }
+        XCTAssertEqual(filtered.count, 2 )
+    }
+    
+    
     
     
 }
