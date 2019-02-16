@@ -49,27 +49,6 @@ class HouseListViewController: UITableViewController {
         return 90
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Averiguar la casa que lo ha pulsado
-        let house = model[indexPath.row]
-        
-        // Avisamos al delegado
-        // Quien quiera que se conforme al houseListViewController, para hacer lo que tenga que hacer
-        delegate?.houseListViewController(self, didSelectHouse: house)
-        
-        // Emitir la misma info por notificaciones (porque ya he usado un delegado para
-        let notificationCenter = NotificationCenter.default        
-        // Creamos la notificación
-        let notification = Notification(name: Notification.Name(HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: self, userInfo: [HOUSE_KEY: house] )
-        
-        // Enviamos la notificación
-        notificationCenter.post(notification)
-
-        // Guardar la casa seleccionada
-        saveLastSelectedHouse(at: indexPath.row)
-    }
-
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        // Descubrir cuál es la casa que tenemos que mostrar
         let house = model[indexPath.row]
@@ -89,7 +68,26 @@ class HouseListViewController: UITableViewController {
         return cell!
     }
     
-   
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Averiguar la casa que lo ha pulsado
+        let house = model[indexPath.row]
+        
+        // Avisamos al delegado
+        // Quien quiera que se conforme al houseListViewController, para hacer lo que tenga que hacer
+        delegate?.houseListViewController(self, didSelectHouse: house)
+        
+        // Emitir la misma info por notificaciones (porque ya he usado un delegado para
+        let notificationCenter = NotificationCenter.default
+        // Creamos la notificación
+        let notification = Notification(name: Notification.Name(HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: self, userInfo: [HOUSE_KEY: house] )
+        
+        // Enviamos la notificación
+        notificationCenter.post(notification)
+        
+        // Guardar la casa seleccionada
+        saveLastSelectedHouse(at: indexPath.row)
+    }
+    
 }
 
 extension HouseListViewController {

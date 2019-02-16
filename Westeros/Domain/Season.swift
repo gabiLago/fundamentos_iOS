@@ -26,6 +26,12 @@ final class Season {
 }
 
 extension Season {
+    var sortedEpisodes: [Episode] {
+        return _episodes.sorted()
+    }
+}
+
+extension Season {
     var proxySeasonForEquatable: String {
         return name
     }
