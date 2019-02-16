@@ -46,4 +46,17 @@ class SeasonListViewController: UITableViewController {
         cell?.textLabel?.text = season.name
         return cell!
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // What season has been clicked?
+        let season = model[indexPath.row]
+        
+        // Build detail controller for season
+        let seasonDetailViewController = SeasonDetailViewController(model: season)
+        
+        // Go to Season
+        navigationController?.pushViewController(seasonDetailViewController, animated: true)
+        
+    }
 }

@@ -10,7 +10,7 @@ import XCTest
 @testable import Westeros
 
 class repositoryTests: XCTestCase {
-
+    
     var houses: [House] = []
     var seasons: [Season] = []
     var episodes: [Episode] = []
@@ -21,12 +21,10 @@ class repositoryTests: XCTestCase {
     }
     
     
-    
-
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    
     func testLocalRepositoryExistence() {
         XCTAssertNotNil(Repository.local)
     }
@@ -34,7 +32,7 @@ class repositoryTests: XCTestCase {
     func testLocalRepositoryHouseExistence() {
         XCTAssertNotNil(houses)
     }
-
+    
     func testLocalRepository_HouseCount() {
         XCTAssertEqual(houses.count, 3)
     }
@@ -78,8 +76,5 @@ class repositoryTests: XCTestCase {
         }
         XCTAssertEqual(filtered.count, 2 )
     }
-    
-    
-    
     
 }

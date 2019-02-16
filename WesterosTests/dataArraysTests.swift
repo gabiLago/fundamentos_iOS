@@ -18,20 +18,19 @@ class dataArraysTests: XCTestCase {
     var episodesArray = [Episode]()
     
     override func setUp() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
         
         for season in gotSeasons {
             seasonsArray.append(Season(
                 name: season.name,
-                releaseDate: dateFormatter.date(from: season.releaseDate)!)
+                releaseDate: stringToDate(season.releaseDate)
+                )
             )
         }
         
         for episode in gotEpisodes {
             episodesArray.append(Episode(
                 title: episode.title,
-                screeningDate: dateFormatter.date(from: episode.screeningDate)!,
+                screeningDate: stringToDate(episode.screeningDate),
                 synopsis: episode.synopsis,
                 season: seasonsArray.first(where: {$0.name == episode.season})!)
             )

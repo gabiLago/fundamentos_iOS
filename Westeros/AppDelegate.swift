@@ -48,11 +48,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ]
         
         
+        let season3 = seasons[3]
+        let episode3season = season3.sortedEpisodes
+        
         let seasonList = SeasonListViewController(model: seasons)
-                                                                                                                                                                                  
+        let episodeDetail = EpisodeDetailViewController(model: episode3season[0])
+        
+        
+        let episodes3season = EpisodeListViewController(model: episode3season)
         // Asignamos el rootViewController del window
         //window?.rootViewController = splitViewController
-        window?.rootViewController = seasonList.wrappedInNavigation()
+        window?.rootViewController = episodes3season.wrappedInNavigation()
         
         return true
     }

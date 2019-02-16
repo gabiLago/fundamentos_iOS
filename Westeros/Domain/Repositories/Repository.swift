@@ -70,8 +70,8 @@ final class LocalFactory: HouseFactory, SeasonFactory {
     
     // Adding Seasons and its Episodes
     var seasons: [Season] {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "dd-MM-yyyy"
         
         var seasonsArray = [Season]()
         var episodesArray = [Episode]()
@@ -79,7 +79,9 @@ final class LocalFactory: HouseFactory, SeasonFactory {
         for season in gotSeasons {
             seasonsArray.append(Season(
                 name: season.name,
-                releaseDate: dateFormatter.date(from: season.releaseDate)!)
+                //releaseDate: dateFormatter.date(from: season.releaseDate)!)
+                releaseDate: stringToDate(season.releaseDate)
+                )
             )
         }
         
@@ -88,7 +90,8 @@ final class LocalFactory: HouseFactory, SeasonFactory {
             let season = seasonsArray.first(where: {$0.name == episode.season})!
             let thisEpisode = (Episode(
                 title: episode.title,
-                screeningDate: dateFormatter.date(from: episode.screeningDate)!,
+                //screeningDate: dateFormatter.date(from: episode.screeningDate)!,
+                screeningDate: stringToDate(episode.screeningDate),
                 synopsis: episode.synopsis,
                 season: season
                 )
