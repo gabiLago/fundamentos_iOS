@@ -46,3 +46,15 @@ class EpisodeDetailViewController: UIViewController {
         episodeSeason.text = String(model.season.name)
     }
 }
+
+extension HouseDetailViewController: HouseListViewControllerDelegate {
+    func houseListViewController(_ viewController: HouseListViewController, didSelectHouse house: House) {
+        // Re-asigna el modelo
+        self.model = house
+        
+        // Sincroniza el modelo (el nuevo) con la vista
+        syncModelWithView()
+    }
+    
+    
+}

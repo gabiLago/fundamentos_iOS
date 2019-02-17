@@ -8,10 +8,15 @@
 
 import UIKit
 
+protocol SeasonListViewControllerDelegate: class {
+    func seasonListViewController(_ viewController: SeasonListViewController, didSelectSeason: Season)
+}
+
 class SeasonListViewController: UITableViewController {
     
     // MARK: Properties
     let model: [Season]
+    weak var delegate: SeasonListViewControllerDelegate?
     
     // MARK: Initialization
     init(model: [Season]) {
@@ -51,12 +56,10 @@ class SeasonListViewController: UITableViewController {
         
         // What season has been clicked?
         let season = model[indexPath.row]
-        
-        // Build detail controller for season
-        let seasonDetailViewController = SeasonDetailViewController(model: season)
-        
-        // Go to Season
-        navigationController?.pushViewController(seasonDetailViewController, animated: true)
-        
+    
+        delegate?.seasonListViewController(self, didSelectSeason: season)
+    
     }
+        
 }
+

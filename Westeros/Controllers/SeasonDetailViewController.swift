@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class SeasonDetailViewController: UIViewController {
 
     // MARK: Outlets
@@ -17,7 +18,7 @@ class SeasonDetailViewController: UIViewController {
     
     // MARK: Properties
     let model: Season
-    
+   
     // MARK: Initialization
     init(model: Season) {
         self.model = model

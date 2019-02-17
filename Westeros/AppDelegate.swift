@@ -21,44 +21,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        // Creamos los modelos
+        // models
         let houses = Repository.local.houses
         let seasons = Repository.local.seasons
-        //let episodes = Repository.local.seasons.sortedEpisodes
-       
-        // Creamos los controladores (el que irá en master y el que irá en detail)
+      
         let houseListViewController = HouseListViewController(model: houses)
         
-        // recuperar la última casa seleccionada (si la hay)
         let lastHouseSelected = houseListViewController.lastSelectedHouse()
         
         let houseDetailViewController = HouseDetailViewController(model: lastHouseSelected)
-        // Asignar delegados
-        // UN OBJETO SOLO PUEDE TENER UN DELEGADO
-        // UN OBJETO PUEDE SER DELAGOD DE MUCHOS OTROS OBJETOS
-        houseListViewController.delegate = houseDetailViewController
-        // Asignar otro delegado para iphone
         
+        houseListViewController.delegate = houseDetailViewController
+        
+        let seasonListViewController = SeasonListViewController(model: seasons)
+        let seasonDetailViewController = SeasonDetailViewController(model: seasons[0])
+        
+        
+        seasonListViewController.delegate = seasonDetailViewController
+        
+        let tabBarController = UITabBarController()
+        
+        
+        tabBarController.viewControllers = [ seasonListViewController.wrappedInNavigation(), houseListViewController.wrappedInNavigation() ]
         
         
         let splitViewController = UISplitViewController()
         splitViewController.viewControllers = [
-            houseListViewController.wrappedInNavigation(),
+            tabBarController,
             houseDetailViewController.wrappedInNavigation()
         ]
         
         
-        let season3 = seasons[3]
-        let episode3season = season3.sortedEpisodes
         
-        let seasonList = SeasonListViewController(model: seasons)
-        let episodeDetail = EpisodeDetailViewController(model: episode3season[0])
-        
-        
-        let episodes3season = EpisodeListViewController(model: episode3season)
-        // Asignamos el rootViewController del window
-        //window?.rootViewController = splitViewController
-        window?.rootViewController = episodes3season.wrappedInNavigation()
+        window?.rootViewController = tabBarController
         
         return true
     }
