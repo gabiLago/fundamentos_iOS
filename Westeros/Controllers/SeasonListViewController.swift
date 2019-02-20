@@ -9,6 +9,9 @@
 import UIKit
 
 protocol SeasonListViewControllerDelegate: class {
+    // Should
+    // Will
+    // Did
     func seasonListViewController(_ viewController: SeasonListViewController, didSelectSeason: Season)
 }
 
@@ -29,6 +32,7 @@ class SeasonListViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+ 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -56,9 +60,7 @@ class SeasonListViewController: UITableViewController {
         
         // What season has been clicked?
         let season = model[indexPath.row]
-    
-        delegate?.seasonListViewController(self, didSelectSeason: season)
-    
+        delegate?.seasonListViewController(self, didSelectSeason: season)    
     }
         
 }

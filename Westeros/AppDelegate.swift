@@ -2,62 +2,73 @@
 //  AppDelegate.swift
 //  Westeros
 //
-//  Created by Gabriel Lago Blasco on 06/02/2019.
+//  Created by Gabriel Lago Blasco on 07/02/2019.
 //  Copyright © 2019 Gabi Lago Blasco. All rights reserved.
 //
 
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate  {
+    
     var window: UIWindow?
-
-
-    func application(_ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions:
-        [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
+    var holi: String = ""
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         window = UIWindow(frame: UIScreen.main.bounds)
+        
         window?.makeKeyAndVisible()
         
-        // models
+        // Crearnos los modelos
         let houses = Repository.local.houses
         let seasons = Repository.local.seasons
-      
-        let houseListViewController = HouseListViewController(model: houses)
         
+        // Creamos los controladores (el que irá en master, y el que irá en el detail)
+        let houseListViewController = HouseListViewController(model: houses)
+        let seasonListViewController = SeasonListViewController(model: seasons)
+        
+        // Recuperar la última casa seleccionada (si hay alguna)
         let lastHouseSelected = houseListViewController.lastSelectedHouse()
         
         let houseDetailViewController = HouseDetailViewController(model: lastHouseSelected)
-        
-        houseListViewController.delegate = houseDetailViewController
-        
-        let seasonListViewController = SeasonListViewController(model: seasons)
         let seasonDetailViewController = SeasonDetailViewController(model: seasons[0])
         
-        
-        seasonListViewController.delegate = seasonDetailViewController
+        // Crear UITabBarController
         
         let tabBarController = UITabBarController()
-        
-        
-        tabBarController.viewControllers = [ seasonListViewController.wrappedInNavigation(), houseListViewController.wrappedInNavigation() ]
-        
-        
-        let splitViewController = UISplitViewController()
-        splitViewController.viewControllers = [
-            tabBarController,
-            houseDetailViewController.wrappedInNavigation()
+        tabBarController.viewControllers = [
+            houseListViewController.wrappedInNavigation(),
+            seasonListViewController.wrappedInNavigation()
         ]
         
         
+        // Asigar delegados
+        // Un objeto SOLO PUEDE TENER UN DELEGADO
+        // Un objeto, puede ser delegado de muchos otros objetos
+        houseListViewController.delegate = houseDetailViewController
+        seasonListViewController.delegate = seasonDetailViewController
+        tabBarController.delegate = self
         
-        window?.rootViewController = tabBarController
+
+        // Asignamos el rootViewController del window
+        window?.rootViewController = SplitViewController()
+        
         
         return true
     }
+  
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        //print("Selected \(viewController.title!)")
+        holi = ("Selected \(viewController.title!)")
+    }
 
-
+    
 }
 
+//extension AppDelegate: UITabBarControllerDelegate {
+//    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+//        print("Selected \(viewController.title!)")
+//        holi = ("Selected \(viewController.title!)")
+//    }
+//}

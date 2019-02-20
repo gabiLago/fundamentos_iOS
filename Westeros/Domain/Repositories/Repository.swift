@@ -64,6 +64,20 @@ final class LocalFactory: HouseFactory, SeasonFactory {
         return house
     }
     
+    // Type Safe Function doing same thing as :named
+    enum enumHouses: String {
+        case Stark
+        case Lannister
+        case Targaryen
+    }
+    
+    func house(named name: enumHouses) -> House? {
+        //let house = houses.filter{ $0.name == name }.first
+        let house = houses.first{ $0.name == name.rawValue } // Con uppercase normalizamos los valores
+        return house
+    }
+    
+    
     func houses(filteredBy theFilter: (House) -> Bool) -> [House] {
         return houses.filter(theFilter)
     }

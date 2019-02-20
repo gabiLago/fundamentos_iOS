@@ -1,28 +1,28 @@
 //
-//  EpisodeDetailViewController.swift
+//  MemberDetailViewController.swift
 //  Westeros
 //
-//  Created by Gabriel Lago Blasco on 16/02/2019.
+//  Created by Gabriel Lago Blasco on 19/02/2019.
 //  Copyright © 2019 Gabi Lago Blasco. All rights reserved.
 //
 
 import UIKit
 
-class EpisodeDetailViewController: UIViewController {
+class MemberDetailViewController: UIViewController {
 
     // MARK: Outlets
-    @IBOutlet weak var episodeSynopsis: UILabel!
-    @IBOutlet weak var episodeScreeningDate: UILabel!
-    @IBOutlet weak var episodeSeason: UILabel!
+    @IBOutlet weak var fullName: UILabel!
+    @IBOutlet weak var alias: UILabel!
+    @IBOutlet weak var house: UILabel!
     
     // MARK: Properties
-    var model: Episode
+    var model: Person
     
     // MARK: Initialization
-    init(model: Episode) {
+    init (model: Person){
         self.model = model
         super.init(nibName: nil, bundle: nil)
-        title = model.title
+        title = model.name
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,11 +37,8 @@ class EpisodeDetailViewController: UIViewController {
     
     // MARK: Sync
     func syncModelWithView() {
-
-        episodeSynopsis.text = model.synopsis
-        episodeScreeningDate.text = "Fecha de estreno: \(dateToString(model.screeningDate))"
-        episodeSeason.text = String(model.season.name)
+        fullName.text = "Nombre: \(model.fullName)"
+        alias.text = "Alias: \(model.alias)"
+        house.text = "Casa: \(String(model.house.name))"
     }
 }
-
-

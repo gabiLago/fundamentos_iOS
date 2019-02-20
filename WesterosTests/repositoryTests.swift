@@ -77,4 +77,11 @@ class repositoryTests: XCTestCase {
         XCTAssertEqual(filtered.count, 2 )
     }
     
+    func testLocalRepositoryReturnsHouseNamedThroughEnum() {
+        let stark = Repository.local.house(named: LocalFactory.enumHouses.Stark)
+        let lannister = Repository.local.house(named: LocalFactory.enumHouses.Lannister)
+        XCTAssertNotNil(stark)
+        XCTAssertNotEqual(lannister?.name, "Lonister")
+        XCTAssertEqual(stark?.name, "Stark")
+    }
 }
