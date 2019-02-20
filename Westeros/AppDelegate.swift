@@ -50,25 +50,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         seasonListViewController.delegate = seasonDetailViewController
         tabBarController.delegate = self
         
+        // Creamos el split view controller y asignamos los controladores
+        let splitViewController = UISplitViewController()
+        splitViewController.viewControllers = [
+            tabBarController,
+            houseDetailViewController.wrappedInNavigation()
+        ]
+        
+        
 
         // Asignamos el rootViewController del window
-        window?.rootViewController = SplitViewController()
+        window?.rootViewController = splitViewController
         
         
         return true
     }
   
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        //print("Selected \(viewController.title!)")
-        holi = ("Selected \(viewController.title!)")
+        print("Selected \(viewController.title!)")
+        holi = ("Holi \(viewController.title!)")
     }
 
     
 }
-
-//extension AppDelegate: UITabBarControllerDelegate {
-//    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-//        print("Selected \(viewController.title!)")
-//        holi = ("Selected \(viewController.title!)")
-//    }
-//}
