@@ -76,6 +76,7 @@
 		0683F26D22183FA5009FAE9C /* SeasonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDetailViewController.swift; sourceTree = "<group>"; };
 		0683F26E22183FA6009FAE9C /* SeasonDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeasonDetailViewController.xib; sourceTree = "<group>"; };
 		0683F27122184654009FAE9C /* dateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateFormatter.swift; sourceTree = "<group>"; };
+		069328BE221EC37500EF21AC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		06B1070C220ACE0B00BFA550 /* Westeros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Westeros.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06B1070F220ACE0B00BFA550 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06B10716220ACE0D00BFA550 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,6 +129,7 @@
 		06B10703220ACE0B00BFA550 = {
 			isa = PBXGroup;
 			children = (
+				069328BE221EC37500EF21AC /* README.md */,
 				06B1070E220ACE0B00BFA550 /* Westeros */,
 				06B10723220ACE0D00BFA550 /* WesterosTests */,
 				06B1070D220ACE0B00BFA550 /* Products */,
