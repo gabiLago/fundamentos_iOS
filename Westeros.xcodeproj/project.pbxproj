@@ -20,8 +20,6 @@
 		06517C182212EEB1006402FE /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06517C172212EEB1006402FE /* constants.swift */; };
 		0683F25722181C96009FAE9C /* SeasonListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0683F25522181C96009FAE9C /* SeasonListViewController.swift */; };
 		0683F25822181C96009FAE9C /* SeasonListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0683F25622181C96009FAE9C /* SeasonListViewController.xib */; };
-		0683F26322182BEA009FAE9C /* EpsiodeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0683F26122182BEA009FAE9C /* EpsiodeListViewController.swift */; };
-		0683F26422182BEA009FAE9C /* EpsiodeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0683F26222182BEA009FAE9C /* EpsiodeListViewController.xib */; };
 		0683F26722182C22009FAE9C /* EpisodeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0683F26522182C22009FAE9C /* EpisodeListViewController.swift */; };
 		0683F26822182C22009FAE9C /* EpisodeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0683F26622182C22009FAE9C /* EpisodeListViewController.xib */; };
 		0683F26B22183078009FAE9C /* EpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0683F26922183078009FAE9C /* EpisodeDetailViewController.swift */; };
@@ -71,8 +69,6 @@
 		06517C172212EEB1006402FE /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		0683F25522181C96009FAE9C /* SeasonListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonListViewController.swift; sourceTree = "<group>"; };
 		0683F25622181C96009FAE9C /* SeasonListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeasonListViewController.xib; sourceTree = "<group>"; };
-		0683F26122182BEA009FAE9C /* EpsiodeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpsiodeListViewController.swift; sourceTree = "<group>"; };
-		0683F26222182BEA009FAE9C /* EpsiodeListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpsiodeListViewController.xib; sourceTree = "<group>"; };
 		0683F26522182C22009FAE9C /* EpisodeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeListViewController.swift; sourceTree = "<group>"; };
 		0683F26622182C22009FAE9C /* EpisodeListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeListViewController.xib; sourceTree = "<group>"; };
 		0683F26922183078009FAE9C /* EpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewController.swift; sourceTree = "<group>"; };
@@ -132,8 +128,6 @@
 		06B10703220ACE0B00BFA550 = {
 			isa = PBXGroup;
 			children = (
-				0683F26122182BEA009FAE9C /* EpsiodeListViewController.swift */,
-				0683F26222182BEA009FAE9C /* EpsiodeListViewController.xib */,
 				06B1070E220ACE0B00BFA550 /* Westeros */,
 				06B10723220ACE0D00BFA550 /* WesterosTests */,
 				06B1070D220ACE0B00BFA550 /* Products */,
@@ -309,7 +303,6 @@
 				060E83B7220DB90900EEB3B8 /* MemberListViewController.xib in Resources */,
 				06B10717220ACE0D00BFA550 /* Assets.xcassets in Resources */,
 				0683F26822182C22009FAE9C /* EpisodeListViewController.xib in Resources */,
-				0683F26422182BEA009FAE9C /* EpsiodeListViewController.xib in Resources */,
 				06B1073F220B45E900BFA550 /* HouseDetailViewController.xib in Resources */,
 				062E04C0220C68F1009A7649 /* WikiViewController.xib in Resources */,
 				06DC98A8220CCDC1002BE234 /* HouseListViewController.xib in Resources */,
@@ -353,7 +346,6 @@
 				0683F26B22183078009FAE9C /* EpisodeDetailViewController.swift in Sources */,
 				062E04BF220C68F1009A7649 /* WikiViewController.swift in Sources */,
 				06B10739220AF18A00BFA550 /* Person.swift in Sources */,
-				0683F26322182BEA009FAE9C /* EpsiodeListViewController.swift in Sources */,
 				06DC98A7220CCDC1002BE234 /* HouseListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
