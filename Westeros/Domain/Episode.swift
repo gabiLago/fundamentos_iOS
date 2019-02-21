@@ -12,7 +12,7 @@ final class Episode {
     let title: String
     let screeningDate: Date
     let synopsis: String
-    let season: Season
+    weak var season: Season?
     
     init(title: String, screeningDate: Date, synopsis: String, season: Season){
         self.title = title

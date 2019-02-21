@@ -2,7 +2,7 @@
 
 ### Obligatorio
 
-1. 
+1.  Season y Episode
 * clase Season que representa una temporada:  nombre y  fecha (Date). **Done**
 * Cada episodio está representado por una instancia de Episode. Episode: título y  fecha de emisión. **Done**
 * Todo episodio tiene una referencia a la Season de la que es parte. ¡Mucho cuidado con crear referencias circulares! **Done** 

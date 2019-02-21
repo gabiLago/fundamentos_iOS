@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         let splitViewController = UISplitViewController()
         splitViewController.viewControllers = [
             tabBarController,
-            houseDetailViewController.wrappedInNavigation()
+            seasonDetailViewController.wrappedInNavigation()
         ]
         
         

@@ -13,7 +13,6 @@ typealias SeasonEpisodes = Set<Episode>
 final class Season {
     // MARK: Properties
     let name: String
-    #warning("TODO Eliminar referencias circulares, unowned mejor que weak?")
     private var _episodes: SeasonEpisodes
     let releaseDate: Date
     

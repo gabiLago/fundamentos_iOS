@@ -40,7 +40,9 @@ class EpisodeDetailViewController: UIViewController {
 
         episodeSynopsis.text = model.synopsis
         episodeScreeningDate.text = "Fecha de estreno: \(dateToString(model.screeningDate))"
-        episodeSeason.text = String(model.season.name)
+        if(model.season?.name) != nil {
+            episodeSeason.text = model.season?.name
+        }
     }
 }
 
