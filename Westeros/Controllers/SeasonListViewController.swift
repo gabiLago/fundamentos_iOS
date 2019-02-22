@@ -29,7 +29,7 @@ class SeasonListViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
- 
+    
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -57,8 +57,45 @@ class SeasonListViewController: UITableViewController {
         
         // What season has been clicked?
         let season = model[indexPath.row]
-        delegate?.seasonListViewController(self, didSelectSeason: season)    
-    }
         
+        delegate?.seasonListViewController(self, didSelectSeason: season)
+        
+        // Notification with the same info
+        let notificationCenter = NotificationCenter.default
+        
+        let notification = Notification(name: Notification.Name(SEASON_DID_CHANGE_NOTIFICATION), object: self, userInfo: [SEASON_KEY: season])
+        
+        notificationCenter.post(notification)
+        
+        saveLastSelectedSeason(at: indexPath.row)
+    }
+    
 }
 
+extension SeasonListViewController {
+    func saveLastSelectedSeason(at index: Int) {
+        // UserDefaults será nuestro motor de persistencia
+        let userDefaults = UserDefaults.standard
+        
+        // Escribimos el index en una key de nuestro motor de persistencia
+        userDefaults.set(index, forKey: LAST_SEASON_KEY)
+        
+        // Guardamos
+        userDefaults.synchronize() // Por si acaso (save)
+    }
+    
+    func lastSelectedSeason() -> Season {
+        // UserDefaults
+        let userDefaults = UserDefaults.standard
+        
+        // Leemos de nuestro motor de persistencia
+        let index = userDefaults.integer(forKey: LAST_SEASON_KEY) // 0 es default
+        
+        // Devolvemos la casa situada en el index
+        return season(at: index)
+    }
+    
+    func season(at index: Int) -> Season {
+        return model[index]
+    }
+}

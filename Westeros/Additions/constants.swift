@@ -12,3 +12,7 @@ import Foundation
 let HOUSE_DID_CHANGE_NOTIFICATION_NAME = "HouseDidChangeNotificationName"
 let HOUSE_KEY = "HouseKey"
 let LAST_HOUSE_KEY = "Last House Key"
+
+let SEASON_DID_CHANGE_NOTIFICATION = "SeasonDidChangeNotification"
+let SEASON_KEY = "SeasonKey"
+let LAST_SEASON_KEY = "Last Season Key"
