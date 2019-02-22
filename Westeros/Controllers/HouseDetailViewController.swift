@@ -37,7 +37,12 @@ class HouseDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         syncModelWithView()
         setupUI()
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
 
+       
     }
     
     // MARK: Sync

@@ -9,9 +9,6 @@
 import UIKit
 
 protocol SeasonListViewControllerDelegate: class {
-    // Should
-    // Will
-    // Did
     func seasonListViewController(_ viewController: SeasonListViewController, didSelectSeason: Season)
 }
 

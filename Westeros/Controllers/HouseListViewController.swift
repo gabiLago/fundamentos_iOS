@@ -118,5 +118,3 @@ extension HouseListViewController {
         return model[index]
     }
 }
-
-
