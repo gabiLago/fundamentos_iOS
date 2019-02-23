@@ -39,7 +39,6 @@ class SeasonDetailViewController: UIViewController {
     
     // MARK: Sync
     func syncModelWithView() {
-        
         seasonName.text = model.name
         seasonReleaseDate.text = "Fecha de estreno: \(dateToString (model.releaseDate))"
         numberOfEpisodes.text = "Número de episodios: \(String(model.count))"

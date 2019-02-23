@@ -11,44 +11,45 @@ import UIKit
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate  {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    let houses = Repository.local.houses
-    let seasons = Repository.local.seasons
     var houseDetailViewController: HouseDetailViewController!
-    var seasonDetailViewController: SeasonDetailViewController!
-    var lastHouseSelected: House!
-    var seasonListViewController: SeasonListViewController!
     var houseListViewController: HouseListViewController!
+    var lastHouseSelected: House!
+    
+    var seasonDetailViewController: SeasonDetailViewController!
+    var seasonListViewController: SeasonListViewController!
+    var lastSeasonSelected: Season!
+    
     let splitViewController = UISplitViewController()
+    let tabBarController = UITabBarController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        
         window?.makeKeyAndVisible()
         
+        // Houses Controllers
+        let houses = Repository.local.houses
         houseListViewController = HouseListViewController(model: houses)
-        seasonListViewController = SeasonListViewController(model: seasons)
-        
-        // Recuperar la última casa seleccionada (si hay alguna)
         lastHouseSelected = houseListViewController.lastSelectedHouse()
-        
         houseDetailViewController = HouseDetailViewController(model: lastHouseSelected)
-        seasonDetailViewController = SeasonDetailViewController(model: seasons[0])
+        houseListViewController.delegate = houseDetailViewController
+        
+        // Seasons Controllers
+        let seasons = Repository.local.seasons
+        seasonListViewController = SeasonListViewController(model: seasons)
+        lastSeasonSelected = seasonListViewController.lastSelectedSeason()
+        seasonDetailViewController = SeasonDetailViewController(model: lastSeasonSelected)
+        seasonListViewController.delegate = seasonDetailViewController
         
         // TabBar
-        let tabBarController = UITabBarController()
         tabBarController.viewControllers = [
             houseListViewController.wrappedInNavigation(),
             seasonListViewController.wrappedInNavigation()
         ]
-        
-        // Delegates
-        houseListViewController.delegate = houseDetailViewController
-        seasonListViewController.delegate = seasonDetailViewController
         tabBarController.delegate = self
         
         // SplitView
@@ -56,21 +57,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             tabBarController,
             houseDetailViewController.wrappedInNavigation()
         ]
+        splitViewController.preferredDisplayMode = .allVisible
         
         window?.rootViewController = splitViewController
         
         return true
     }
-    
-    //UITabBarControllerDelegate implementation
+}
+
+extension AppDelegate:  UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        print("Selected \(viewController.title!)")
-        
-        if(viewController.title! == "Seasons") {
-            splitViewController.showDetailViewController(seasonDetailViewController.wrappedInNavigation(), sender: nil)
+
+        if (splitViewController.isCollapsed){
+            splitViewController.show(tabBarController.wrappedInNavigation(), sender: nil)
         } else {
-            splitViewController.showDetailViewController(houseDetailViewController.wrappedInNavigation(), sender: nil)
+            if(viewController.title! == "Seasons") {
+                splitViewController.showDetailViewController(seasonDetailViewController.wrappedInNavigation(), sender: nil)
+            } else {
+                splitViewController.showDetailViewController(houseDetailViewController.wrappedInNavigation(), sender: nil)
+            }
         }
-        
     }
 }

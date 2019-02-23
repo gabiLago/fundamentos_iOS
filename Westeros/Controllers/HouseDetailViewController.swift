@@ -41,8 +41,6 @@ class HouseDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
-
-       
     }
     
     // MARK: Sync
@@ -51,8 +49,8 @@ class HouseDetailViewController: UIViewController {
         houseNameLabel.text = "House \(model.name)"
         sigilImageView.image = model.sigil.image
         wordsLabel.text = model.words
-        
     }
+    
     
     // MARK: UI
     func setupUI() {
@@ -83,6 +81,7 @@ class HouseDetailViewController: UIViewController {
 }
 
 extension HouseDetailViewController: HouseListViewControllerDelegate {
+    
     func houseListViewController(_ viewController: HouseListViewController, didSelectHouse house: House) {
         // Re-asigna el modelo
         self.model = house
