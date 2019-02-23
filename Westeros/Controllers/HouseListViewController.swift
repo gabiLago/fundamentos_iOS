@@ -17,11 +17,14 @@ protocol HouseListViewControllerDelegate: class {
 }
 
 
+
+
 class HouseListViewController: UITableViewController {
     
     // MARK: Properties
     let model: [House]
     weak var delegate: HouseListViewControllerDelegate?
+    
     
     // MARK: Initialization
     init(model: [House]) {
@@ -49,6 +52,7 @@ class HouseListViewController: UITableViewController {
         // Descubrir cuál es la casa que tenemos que mostrar
         let house = model[indexPath.row]
         
+        
         // Crear una celda
         let cellId = "HouseCell"
         var cell = tableView.dequeueReusableCell(withIdentifier: cellId)
@@ -69,14 +73,26 @@ class HouseListViewController: UITableViewController {
         return 90
     }
     
+   
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+            
         // Averiguar la casa que se ha pulsado
         let house = model[indexPath.row]
+
         
-        // Avisar al delegado
-        // Quien quiera, que se conforme al HouseListViewControllerDelegate para hacer lo que tenga que hacer
-        delegate?.houseListViewController(self, didSelectHouse: house)
+        guard let splitView = self.splitViewController else {
+            return
+        }       
+        
+        // If splitView is Collapsed ~= iPhone
+        if (splitView.isCollapsed) {
+            navigationController?.pushViewController(HouseDetailViewController(model: house), animated: true)
+        } else {
+            // Avisar al delegado
+            // Quien quiera, que se conforme al HouseListViewControllerDelegate para hacer lo que tenga que hacer
+            delegate?.houseListViewController(self, didSelectHouse: house)
+        }
         
         // Emitir la misma info por notificaciones
         let notificationCenter = NotificationCenter.default

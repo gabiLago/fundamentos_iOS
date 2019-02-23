@@ -60,7 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         splitViewController.preferredDisplayMode = .allVisible
         
         window?.rootViewController = splitViewController
-        
         return true
     }
 }
@@ -68,9 +67,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate:  UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
 
-        if (splitViewController.isCollapsed){
-            splitViewController.show(tabBarController.wrappedInNavigation(), sender: nil)
-        } else {
+        if (!splitViewController.isCollapsed){
+            
             if(viewController.title! == "Seasons") {
                 splitViewController.showDetailViewController(seasonDetailViewController.wrappedInNavigation(), sender: nil)
             } else {

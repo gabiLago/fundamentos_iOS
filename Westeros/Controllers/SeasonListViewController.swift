@@ -58,8 +58,15 @@ class SeasonListViewController: UITableViewController {
         // What season has been clicked?
         let season = model[indexPath.row]
         
-        delegate?.seasonListViewController(self, didSelectSeason: season)
+        guard let splitView = self.splitViewController else {
+            return
+        }
         
+        if (splitView.isCollapsed) {
+            navigationController?.pushViewController(SeasonDetailViewController(model: season), animated: true)
+        } else {
+            delegate?.seasonListViewController(self, didSelectSeason: season)
+        }
         // Notification with the same info
         let notificationCenter = NotificationCenter.default
         
