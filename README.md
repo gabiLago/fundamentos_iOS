@@ -24,7 +24,7 @@
 * Pista 2: Guarda como propiedades todos aquellos objetos que necesites utilizar en varios métodos de la misma clase.
 8. Crea una función house(:named), similar a la que acepta un String, pero que sea type safe y funcione el autocompletado. ¿Se te ocurre qué tipo de datos podemos utilizar? Haz el test correspondiente. **Done - con Enum**
 
-9. Arreglar en iPad MembersViewController para que responda al cambio en la lista igual que WikiVC. Arréglalo. También para que al seleccionar otra Season se actualiza su detalle y su lista de capítulos. 
+9. Arreglar en iPad MembersViewController para que responda al cambio en la lista igual que WikiVC. Arréglalo. También para que al seleccionar otra Season se actualiza su detalle y su lista de capítulos. **Done**
 10. Crea un MemberDetailViewController. Cuando se haga click en una celda de MemberListViewController, hacer un push a MemberDetailViewController. **Done**
 
 ### Opcional 
