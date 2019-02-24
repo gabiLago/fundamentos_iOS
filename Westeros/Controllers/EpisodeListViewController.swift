@@ -9,7 +9,7 @@
 import UIKit
 
 class EpisodeListViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var model: [Episode]
@@ -27,7 +27,7 @@ class EpisodeListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-        tableView.delegate = self       
+        tableView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,14 +36,14 @@ class EpisodeListViewController: UIViewController {
         // Tan pronto como te des de alta, implementa el código para darte de baja. Si no te olvidrás
         let notificationCenter = NotificationCenter.default
         let name = Notification.Name(SEASON_DID_CHANGE_NOTIFICATION)
-
+        
         notificationCenter.addObserver(self,
                                        selector: #selector(seasonDidChange(notification:)),
                                        name: name,
                                        object: nil) // Object es quien manda la notificación
-
+        
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         let notificationCenter = NotificationCenter.default
@@ -65,7 +65,7 @@ extension EpisodeListViewController: UITableViewDataSource{
         }
         
         cell?.textLabel?.text = episode.title
-               
+        
         return cell!
     }
     
@@ -88,18 +88,21 @@ extension EpisodeListViewController: UITableViewDataSource{
         guard let info = notification.userInfo else {
             return
         }
-
+        
         // Sacar la casa del userInfo
         guard let season = info[SEASON_KEY] as? Season else {
             return
         }
-
-        // Actualizar mi modelo
+        
         self.model = season.sortedEpisodes
-
+        
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+        #warning("Not working as expected")
+        
         // Reload tableView
         tableView.reloadData()
-
+        
     }
     
 }

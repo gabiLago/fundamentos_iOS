@@ -23,8 +23,7 @@ class SeasonDetailViewController: UIViewController {
     init(model: Season) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
-        title = model.name
-    }
+            }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -37,11 +36,14 @@ class SeasonDetailViewController: UIViewController {
         setupUI()
     }
     
+
+    
     // MARK: Sync
     func syncModelWithView() {
         seasonName.text = model.name
         seasonReleaseDate.text = "Fecha de estreno: \(dateToString (model.releaseDate))"
         numberOfEpisodes.text = "Número de episodios: \(String(model.count))"
+        title = model.name
     }
     
     // MARK: UI

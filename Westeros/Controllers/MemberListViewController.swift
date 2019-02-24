@@ -31,6 +31,8 @@ class MemberListViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        
+        
     }
     
     // Houses did Change Notification
@@ -51,6 +53,8 @@ class MemberListViewController: UIViewController {
     // MARK: Notification
     @objc func houseDidChange(notification: Notification) {
         
+        
+        
         guard let info = notification.userInfo else {
             return
         }
@@ -64,6 +68,8 @@ class MemberListViewController: UIViewController {
         model = house.sortedMembers
         
         // Reload tableView
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: house.name, style: .plain, target: nil, action: nil)
+        
         tableView.reloadData()
         
     }
