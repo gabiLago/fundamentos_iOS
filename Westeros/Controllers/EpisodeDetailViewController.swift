@@ -14,7 +14,8 @@ class EpisodeDetailViewController: UIViewController {
     @IBOutlet weak var episodeSynopsis: UILabel!
     @IBOutlet weak var episodeScreeningDate: UILabel!
     @IBOutlet weak var episodeSeason: UILabel!
-    
+    @IBOutlet weak var directedBy: UILabel!
+    @IBOutlet weak var writtenBy: UILabel!
     // MARK: Properties
     var model: Episode
     
@@ -43,6 +44,8 @@ class EpisodeDetailViewController: UIViewController {
         if(model.season?.name) != nil {
             episodeSeason.text = model.season?.name
         }
+        directedBy.text = "Dirigido por: \(model.directedBy)"
+        writtenBy.text = "Escrito por: \(model.writtenBy)"
     }
 }
 

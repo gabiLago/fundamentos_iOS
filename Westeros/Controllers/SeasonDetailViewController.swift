@@ -15,6 +15,7 @@ class SeasonDetailViewController: UIViewController {
     @IBOutlet weak var seasonName: UILabel!
     @IBOutlet weak var seasonReleaseDate: UILabel!
     @IBOutlet weak var numberOfEpisodes: UILabel!
+    @IBOutlet weak var seasonImage: UIImageView!
     
     // MARK: Properties
     var model: Season
@@ -43,6 +44,7 @@ class SeasonDetailViewController: UIViewController {
         seasonName.text = model.name
         seasonReleaseDate.text = "Fecha de estreno: \(dateToString (model.releaseDate))"
         numberOfEpisodes.text = "Número de episodios: \(String(model.count))"
+        seasonImage.image = UIImage(named: model.image)
         title = model.name
     }
     

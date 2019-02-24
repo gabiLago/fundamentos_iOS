@@ -97,8 +97,8 @@ extension EpisodeListViewController: UITableViewDataSource{
         self.model = season.sortedEpisodes
         
         
+        // I don´t understand the backBarButtonItem behaviour
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back Button", style: .plain, target: nil, action: nil)
-        #warning("Not working as expected")
         
         // Reload tableView
         tableView.reloadData()

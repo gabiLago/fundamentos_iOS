@@ -94,7 +94,6 @@ final class LocalFactory: HouseFactory, SeasonFactory {
             seasonsArray.append(Season(
                 name: season.name,
                 image: season.image,
-                //releaseDate: dateFormatter.date(from: season.releaseDate)!)
                 releaseDate: stringToDate(season.releaseDate)
                 )
             )
@@ -105,9 +104,10 @@ final class LocalFactory: HouseFactory, SeasonFactory {
             let season = seasonsArray.first(where: {$0.name == episode.season})!
             let thisEpisode = (Episode(
                 title: episode.title,
-                //screeningDate: dateFormatter.date(from: episode.screeningDate)!,
                 screeningDate: stringToDate(episode.screeningDate),
                 synopsis: episode.synopsis,
+                directedBy: episode.directedBy,
+                writtenBy: episode.writtenBy,
                 season: season
                 )
             )
