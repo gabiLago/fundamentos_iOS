@@ -10,10 +10,7 @@ import XCTest
 
 @testable import Westeros
 
-
-
 class dataArraysTests: XCTestCase {
-   
     var seasonsArray = [Season]()
     var episodesArray = [Episode]()
     
@@ -33,6 +30,8 @@ class dataArraysTests: XCTestCase {
                 title: episode.title,
                 screeningDate: stringToDate(episode.screeningDate),
                 synopsis: episode.synopsis,
+                directedBy: episode.directedBy,
+                writtenBy: episode.writtenBy,
                 season: seasonsArray.first(where: {$0.name == episode.season})!)
             )
         }
@@ -52,7 +51,4 @@ class dataArraysTests: XCTestCase {
     func testRandomEpisodeHasSeason() {
         XCTAssertNotNil(episodesArray[9].season)
     }
-   
-    
-
-}
+   }

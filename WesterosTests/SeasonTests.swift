@@ -16,6 +16,7 @@ class SeasonTests: XCTestCase {
     let dateFormatter = DateFormatter()
     var screeningDate1, screeningDate2, releaseDate1, releaseDate2: Date!
     var title1, title2: String!
+    var sampleWrittenBy, sampleDirectedBy: String!
     var synopsis1, synopsis2: String!
     var episode1, episode2: Episode!
     var season1, cloneSeason1, season2: Season!
@@ -37,11 +38,14 @@ class SeasonTests: XCTestCase {
         title1 = "Winter is Coming"
         title2 = "The Kingsroad"
         
+        sampleDirectedBy = "Director"
+        sampleWrittenBy = "Author"
+        
         synopsis1 = "El rey [...] su ejército."
         synopsis2 = "Tras aceptar su nuevo rol [...], Drogo."
         
-        episode1 = Episode(title: title1, screeningDate: screeningDate1!, synopsis: synopsis1, season: season1)
-        episode2 = Episode(title: title2, screeningDate: screeningDate2!, synopsis: synopsis2, season: season1)
+        episode1 = Episode(title: title1, screeningDate: screeningDate1!, synopsis: synopsis1, directedBy: sampleDirectedBy, writtenBy: sampleWrittenBy , season: season1)
+        episode2 = Episode(title: title2, screeningDate: screeningDate2!, synopsis: synopsis2, directedBy: sampleDirectedBy, writtenBy: sampleWrittenBy , season: season1)
     }
     
     override func tearDown() {

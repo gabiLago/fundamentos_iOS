@@ -66,12 +66,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate:  UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-
         if (!splitViewController.isCollapsed){
-            
-            if(viewController.title! == "Seasons") {
+             if(viewController.title! == "Seasons") {
                 splitViewController.showDetailViewController(seasonDetailViewController.wrappedInNavigation(), sender: nil)
-            } else {
+        } else {
                 splitViewController.showDetailViewController(houseDetailViewController.wrappedInNavigation(), sender: nil)
             }
         }

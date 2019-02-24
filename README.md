@@ -19,7 +19,7 @@
 7. Nueva Interfaz gráfica:
 * Crea un HouseListViewController empaquetado dentro de un UINavigationController. **Done - con WrappedInNavigation()**
 * Crea un SeasonListViewController empaquetado dentro de un UINavigationViewController Mete a ambos dentro de un UITabBarController **Done**
-* Usa éste como masterViewController del UISplitViewController. Asegúrate de poder cambiar de uno a otro y poder navegar de House a Person y de Season a Episode. **warning("TODO")**
+* Usa éste como masterViewController del UISplitViewController. Asegúrate de poder cambiar de uno a otro y poder navegar de House a Person y de Season a Episode. **Done**
 * Pista: UITabBarControllerDelegate
 * Pista 2: Guarda como propiedades todos aquellos objetos que necesites utilizar en varios métodos de la misma clase.
 8. Crea una función house(:named), similar a la que acepta un String, pero que sea type safe y funcione el autocompletado. ¿Se te ocurre qué tipo de datos podemos utilizar? Haz el test correspondiente. **Done - con Enum**
@@ -34,9 +34,9 @@ Sin embargo, para que el personaje pertenezca a la casa debemos añadirlo manua
 1
 arya = Person(name: "Arya", house: starkHouse)
 1
-starkHouse.add(person: arya)
+starkHouse.add(person: arya) **#warning("toDo")**
 
 En el siguiente módulo veréis que, utilizando CoreData, se actualiza automágicamente 
 
 12. Cuando utilizamos el UISplitViewController en iPhone, nos damos cuenta de varias cosas: por una parte, el UISplitViewController parece haberse transformado en un UINavigationController; por otra, parece que ya se ha hecho un push a HouseDetailViewController.
-Cuando volvemos hacia atrás y seleccionamos de nuevo algún House, no se produce la navegación. Arréglalo   .
+Cuando volvemos hacia atrás y seleccionamos de nuevo algún House, no se produce la navegación. Arréglalo   .**Done**
