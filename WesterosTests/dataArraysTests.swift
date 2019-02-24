@@ -22,6 +22,7 @@ class dataArraysTests: XCTestCase {
         for season in gotSeasons {
             seasonsArray.append(Season(
                 name: season.name,
+                image: season.image,
                 releaseDate: stringToDate(season.releaseDate)
                 )
             )
@@ -45,7 +46,7 @@ class dataArraysTests: XCTestCase {
     }
     
     func testDataArrayHasAllValues() {
-        XCTAssertEqual(seasonsArray.count, 8)
+        XCTAssertEqual(seasonsArray.count, 7)
     }
     
     func testRandomEpisodeHasSeason() {

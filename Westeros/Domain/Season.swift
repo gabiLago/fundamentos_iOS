@@ -13,12 +13,14 @@ typealias SeasonEpisodes = Set<Episode>
 final class Season {
     // MARK: Properties
     let name: String
+    let image: String
     private var _episodes: SeasonEpisodes
     let releaseDate: Date
     
     // MARK: Initialization
-    init(name: String, releaseDate: Date) {
+    init(name: String, image: String, releaseDate: Date) {
         self.name = name
+        self.image = image
         self.releaseDate = releaseDate
         _episodes = SeasonEpisodes()
     }

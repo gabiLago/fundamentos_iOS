@@ -63,7 +63,7 @@ class repositoryTests: XCTestCase {
     }
     
     func testLocalRepository_SeasonCount() {
-        XCTAssertEqual(seasons.count, 8)
+        XCTAssertEqual(seasons.count, 7)
     }
     
     func testLocalRepository_ReturnSortedArrayOfSeasons() {
@@ -72,9 +72,10 @@ class repositoryTests: XCTestCase {
     
     func testLocalFactory_SeasonFilteredBy_ReturnsTheCorrectValue() {
         let filtered = Repository.local.seasons {
-            $0.count == 3
+            $0.count == 10
         }
-        XCTAssertEqual(filtered.count, 2 )
+        XCTAssertEqual(filtered.count, 6 )
+        // Test if 6 seasons has 10 episodes
     }
     
     func testLocalRepositoryReturnsHouseNamedThroughEnum() {

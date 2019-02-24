@@ -29,8 +29,8 @@ class EpisodeTests: XCTestCase {
         releaseDate1 = dateFormatter.date(from: dateString1)
         releaseDate2 = dateFormatter.date(from: dateString3)
         
-        season1 = Season(name: "Temporada 1", releaseDate: releaseDate1!)
-        season2 = Season(name: "Temporada 2", releaseDate: releaseDate2!)
+        season1 = Season(name: "Temporada 1", image: "season1", releaseDate: releaseDate1!)
+        season2 = Season(name: "Temporada 2", image: "season2", releaseDate: releaseDate2!)
         
         title1 = "Winter is Coming"
         title2 = "The Kingsroad"

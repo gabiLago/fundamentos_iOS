@@ -93,6 +93,7 @@ final class LocalFactory: HouseFactory, SeasonFactory {
         for season in gotSeasons {
             seasonsArray.append(Season(
                 name: season.name,
+                image: season.image,
                 //releaseDate: dateFormatter.date(from: season.releaseDate)!)
                 releaseDate: stringToDate(season.releaseDate)
                 )
